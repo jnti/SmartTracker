@@ -14,5 +14,6 @@
 7. Run XAMPP Control Panel 
    * Start Apache Server
 8. Open a Web Browser and go to http://127.0.0.1/
-![Screenshot](docs/images/Dashboard1.png)
-![Screenshot](docs/images/Dashboard2.png)
+
+![Screenshot](https://github.com/jnti/SmartTracker/blob/master/docs/images/Dashboard1.PNG)
+![Screenshot](https://github.com/jnti/SmartTracker/blob/master/docs/images/Dashboard2.PNG)
