@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Smart Tracker</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="description" content="Add widgets to the dashboard.">
+    <meta name="msapplication-tap-highlight" content="no">
+    <!--
+    =========================================================
+    * ArchitectUI HTML Theme Dashboard - v1.0.0
+    =========================================================
+    * Product Page: https://dashboardpack.com
+    * Copyright 2019 DashboardPack (https://dashboardpack.com)
+    * Licensed under MIT (https://github.com/DashboardPack/architectui-html-theme-free/blob/master/LICENSE)
+    =========================================================
+    * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+    -->
+    <link href="./main.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+        <div class="app-header header-shadow">
+            <div class="app-header__logo">
+                <div class="logo-src"></div>
+                <div class="header__pane ml-auto">
+                </div>
+            </div>
+            <div class="app-header__mobile-menu">
+                <div>
+                    <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="app-header__menu">
+                <span>
+                    <button type="button"
+                        class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                        <span class="btn-icon-wrapper">
+                            <i class="fa fa-ellipsis-v fa-w-6"></i>
+                        </span>
+                    </button>
+                </span>
+            </div>
+            <div class="app-header__content">
+                <div class="app-header-left">
+                </div>
+            </div>
+        </div>
+        <div class="app-main">
+            <div class="app-main__inner">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card mb-3 widget-content">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Total Cases</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers"><span id="total_cases"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card mb-3 widget-content">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">New Cases</div>
+                                    <div id="data_date" class="widget-subheading"></div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers"><span id="new_cases"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card mb-3 widget-content">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">Total Deaths</div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers"><span id="total_deaths"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card mb-3 widget-content">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="widget-heading">New Deaths</div>
+                                    <div id="data_date_death" class="widget-subheading"></div>
+                                </div>
+                                <div class="widget-content-right">
+                                    <div class="widget-numbers"><span id="new_deaths"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3 card">
+                            <div class="card-header-tab card-header-tab-animation card-header">
+                                <div class="card-header-title">
+                                    <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
+                                    United States COVID-19 Daily Cases
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="tabs-eg-77">
+                                        <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
+                                            <div class="widget-chat-wrapper-outer">
+                                                <div id="covid_chart_div"
+                                                    class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="mb-3 card">
+                            <div class="card-header-tab card-header-tab-animation card-header">
+                                <div class="card-header-title">
+                                    <i id="stock1">SPDR S&P 500 ETF Trust</i>
+                                </div>
+                                <div class="card-body">
+                                    <div class="input-group"><input id="input1" type="text" class="form-control" placeholder="Enter a Symbol">
+                                        <div class="input-group-append">
+                                            <button id="button1" class="btn btn-primary" onclick="getCompanyData('input1', 'stock1')">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="tabs-eg-77">
+                                        <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
+                                            <div class="widget-chat-wrapper-outer">
+                                                <div id="chart_div1"
+                                                    class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6">
+                        <div class="mb-3 card">
+                            <div class="card-header-tab card-header-tab-animation card-header">
+                                <div class="card-header-title">
+                                    <i id="stock2">SPDR Dow Jones Industrial Average ETF Trust</i>
+                                </div>
+                                <div class="card-body">
+                                    <div class="input-group"><input id="input2" type="text" class="form-control" placeholder="Enter a Symbol">
+                                        <div class="input-group-append">
+                                            <button id="button2" class="btn btn-primary" onclick="getCompanyData('input2', 'stock2')">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="tabs-eg-77">
+                                        <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
+                                            <div class="widget-chat-wrapper-outer">
+                                                <div id="chart_div2"
+                                                    class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-lg-6">
+                        <div class="mb-3 card">
+                            <div class="card-header-tab card-header-tab-animation card-header">
+                                <div class="card-header-title">
+                                    <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
+                                    Sector Performance
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="tabs-eg-77">
+                                        <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
+                                            <div class="widget-chat-wrapper-outer">
+                                                <div class="table-responsive">
+                                                    <table id="table"
+                                                        class="align-middle mb-0 table table-borderless table-striped table-hover">
+                                                        <tr>
+                                                            <td>
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left flex2">
+                                                                            <div id="sec_name1" class="widget-heading">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <div id="sec_perf1"></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left flex2">
+                                                                            <div id="sec_name2" class="widget-heading">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <div id="sec_perf2"></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left flex2">
+                                                                            <div id="sec_name3" class="widget-heading">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <div id="sec_perf3"></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left flex2">
+                                                                            <div id="sec_name4" class="widget-heading">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <div id="sec_perf4"></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left flex2">
+                                                                            <div id="sec_name5" class="widget-heading">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <div id="sec_perf5"></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left flex2">
+                                                                            <div id="sec_name6" class="widget-heading">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <div id="sec_perf6"></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left flex2">
+                                                                            <div id="sec_name7" class="widget-heading">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <div id="sec_perf7"></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left flex2">
+                                                                            <div id="sec_name8" class="widget-heading">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <div id="sec_perf8"></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left flex2">
+                                                                            <div id="sec_name9" class="widget-heading">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <div id="sec_perf9"></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left flex2">
+                                                                            <div id="sec_name10" class="widget-heading">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <div id="sec_perf10"></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="widget-content p-0">
+                                                                    <div class="widget-content-wrapper">
+                                                                        <div class="widget-content-left flex2">
+                                                                            <div id="sec_name11" class="widget-heading">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <div id="sec_perf11"></div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6">
+                        <div class="mb-3 card">
+                            <div class="card-header-tab card-header-tab-animation card-header">
+                                <div class="card-header-title">
+                                    <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
+                                    Economic Calendar
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="tabs-eg-77">
+                                        <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
+                                            <div class="widget-chat-wrapper-outer">
+                                                <div class="tradingview-widget-container">
+                                                    <div class="tradingview-widget-container__widget"></div>
+                                                    <div class="tradingview-widget-copyright"><a
+                                                            href="https://www.tradingview.com/markets/currencies/economic-calendar/"
+                                                            rel="noopener" target="_blank"><span
+                                                                class="blue-text"></span></a></div>
+                                                    <script type="text/javascript"
+                                                        src="https://s3.tradingview.com/external-embedding/embed-widget-events.js"
+                                                        async>
+                                                            {
+                                                                "colorTheme": "light",
+                                                                    "isTransparent": false,
+                                                                        "width": "100%",
+                                                                            "height": "600",
+                                                                                "locale": "en",
+                                                                                    "importanceFilter": "-1,0,1",
+                                                                                        "currencyFilter": "USD"
+                                                            }
+                                                        </script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card mb-3 widget-content">
+                            <div class="widget-content-wrapper">
+                                <a class="twitter-timeline" href="https://twitter.com/realDonaldTrump"
+                                    data-tweet-limit="5">
+                                    Tweets by @realDonaldTrump
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card mb-3 widget-content">
+                            <div class="widget-content-wrapper">
+                                <a class="twitter-timeline" href="https://twitter.com/federalreserve"
+                                    data-tweet-limit="5">
+                                    Tweets by @federalreserve
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card mb-3 widget-content">
+                            <div class="widget-content-wrapper">
+                                <a class="twitter-timeline" href="https://twitter.com/CNBC" data-tweet-limit="5">
+                                    Tweets by @CNBC
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card mb-3 widget-content">
+                            <div class="widget-content-wrapper">
+                                <a class="twitter-timeline" href="https://twitter.com/MarketWatch" data-tweet-limit="5">
+                                    Tweets by @MarketWatch
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script src="./assets/scripts/request.js"></script>
+    <script src="./assets/scripts/createChart.js"></script>
+</body>
+
+</html>
