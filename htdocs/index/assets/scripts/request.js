@@ -106,6 +106,27 @@ function getSectorPerformance() {
     });
 }
 
+function getTimeline(input, div) {
+  var userInput = document.getElementById(input).value;
+  var twtDiv = document.getElementById(div);
+
+  if (userInput == "") {
+    return;
+  }
+
+  twtDiv.innerHTML = "";
+
+  var atag = document.createElement('a');
+  atag.className = "twitter-timeline";
+  atag.href = "https://twitter.com/" + userInput;
+  atag.innerHTML = "Tweets by @" + userInput;
+  atag.setAttribute("data-tweet-limit", 5);
+  document.getElementById(input).value = "";
+  twtDiv.appendChild(atag);
+
+  twttr.widgets.load(document.getElementById(twtDiv));  
+}
+
 document.getElementById('button1').addEventListener("click", function () {
   clickedButton1 = true;
 });
